@@ -1,4 +1,4 @@
-package bean;
+package com.example.bean;
 
 /**
  * Created by dingxy on 2017/5/8.

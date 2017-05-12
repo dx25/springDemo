@@ -3,7 +3,7 @@ package com.example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import service.PersonService;
+import com.example.service.PersonService;
 
 /**
  * Created by silence on 2017/5/9.

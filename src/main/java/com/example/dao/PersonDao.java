@@ -1,6 +1,6 @@
-package dao;
+package com.example.dao;
 
-import bean.Person;
+import com.example.bean.Person;
 
 import java.util.ArrayList;
 import java.util.List;
