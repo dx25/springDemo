@@ -4,30 +4,23 @@ package com.example.bean;
  * Created by dingxy on 2017/5/8.
  */
 public class Person {
-  private String name;
-  private String gender;
+    private String name;
 
-  public String getGender() {
-    return gender;
-  }
+    private int age;
 
-  public void setGender(String gender) {
-    this.gender = gender;
-  }
+    public int getAge() {
+        return age;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  @Override
-  public String toString() {
-    return "Person{" +
-        "name='" + name + '\'' +
-        ", gender='" + gender + '\'' +
-        '}';
-  }
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
