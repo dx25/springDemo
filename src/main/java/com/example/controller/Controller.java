@@ -1,11 +1,11 @@
-package com.example;
+package com.example.controller;
 
+import com.example.bean.Message;
 import com.example.bean.Person;
+import com.example.service.MessageService;
 import com.example.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +16,8 @@ import java.util.List;
 public class Controller {
     @Autowired
     PersonService personService;
+    @Autowired
+    MessageService messageService;
 
     @RequestMapping("/callAll")
     public List<Person> callAll() {
@@ -25,6 +27,11 @@ public class Controller {
     @RequestMapping("/callSb/{id}")
     public Person callSb(@PathVariable("id") Long id) {
         return personService.callSb(id);
+    }
+
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public Message save(@RequestBody Message message){
+        return messageService.save(message);
     }
 
 }

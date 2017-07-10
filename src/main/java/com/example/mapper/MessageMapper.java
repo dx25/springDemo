@@ -4,6 +4,7 @@ import com.example.bean.Message;
 import com.example.bean.MessageExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 public interface MessageMapper {
     /**
