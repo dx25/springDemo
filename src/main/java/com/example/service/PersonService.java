@@ -29,4 +29,9 @@ public class PersonService {
         System.out.println(p);
         return p;
     }
+
+    public boolean verifyToken(String token){
+        //TODO add redis
+        return token.equals("123456");
+    }
 }

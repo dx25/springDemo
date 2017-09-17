@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.annotation.Authenticate;
 import com.example.bean.Message;
 import com.example.bean.Person;
 import com.example.service.MessageService;
@@ -20,6 +21,7 @@ public class Controller {
     MessageService messageService;
 
     @RequestMapping("/callAll")
+    @Authenticate
     public List<Person> callAll() {
         return personService.callName();
     }
