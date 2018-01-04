@@ -16,27 +16,29 @@ import javax.servlet.http.HttpServletResponse
 open class AuthenticationInterceptor : HandlerInterceptor {
 
     @Autowired
-    private lateinit var personService:PersonService
+    private lateinit var personService: PersonService
 
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         //instance of in Java
-        if(handler !is HandlerMethod){
+        if (handler !is HandlerMethod) {
             return true
         }
         val handlerMethod = handler as HandlerMethod
         val method = handlerMethod.method
         val annotation = method.getAnnotation(Authenticate::class.java)
-        if(annotation!=null){
+        if (annotation != null) {
             val token = request.getParameter("token")
-            if(token.isNullOrBlank()){
+            if (token.isNullOrBlank()) {
                 throw RuntimeException("无token")
-            }else{
-                if(personService.verifyToken(token)){
-                    request.setAttribute("user","user")
+            } else {
+                if (personService.verifyToken(token)) {
+                    request.setAttribute("user", "user")
                     return true
                 }
             }
 
+        } else {
+            return true
         }
         return false
     }

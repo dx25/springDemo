@@ -36,4 +36,9 @@ public class Controller {
         return messageService.save(message);
     }
 
+    @RequestMapping(value = "/message")
+    public List<Message> listByName(String name ){
+        return messageService.selectByName(name);
+    }
+
 }
