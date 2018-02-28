@@ -12,3 +12,6 @@ springboot + mybatis
 - /login 生成token存进redis
 - token验证连接redis
 - redis存储用户的token与id映射
+### 18/02/28 更新
+增加了token相关的操作，因为成本问题还是用数据库代替redis
+反正也没人用不用担心性能问题，数据库和redis的实现思路是一样的
