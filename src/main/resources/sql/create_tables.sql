@@ -20,5 +20,15 @@ create table message
 )
 ;
 
+CREATE TABLE user_token(
+	id BIGINT auto_increment
+		primary key,
+	user_id BIGINT NOT NULL ,
+	token varchar(64) not null,
+	createdAt timestamp default CURRENT_TIMESTAMP not null
+);
+CREATE UNIQUE INDEX UNQ_TOKEN_TOKEN ON user_token(token);
+CREATE UNIQUE INDEX UNQ_TOKEN_USER ON user_token(user_id);
+
 
 
