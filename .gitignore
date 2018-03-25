@@ -24,4 +24,4 @@ nbdist/
 .nb-gradle/
 
 ### classes
-/Users/silence/Documents/workspace/springDemo/src/main/java/com/example/controller/WechatController.kt
+src/main/java/com/example/controller/WechatController.kt
