@@ -58,6 +58,8 @@ public class PersonService {
         if (person.getName() != null && person.getPassword() != null) {
             Person result = userMapper.selectPersonByUserName(person.getName());
             if (result.getPassword().equals(genPassword(person.getPassword()))) {
+                String token = tokenService.generateToken(result.getId());
+                result.setToken(token);
                 return result;
             } else {
                 throw new Exception();
