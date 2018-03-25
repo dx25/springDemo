@@ -1,4 +1,4 @@
-import com.example.util.DES
+package com.example.util
 
 
 /**
@@ -9,6 +9,7 @@ object EncryUtil {
     /**
      * 使用默认密钥进行DES加密
      */
+    @JvmStatic
     fun encrypt(plainText: String): String? {
         try {
             return DES().encrypt(plainText)
@@ -22,6 +23,7 @@ object EncryUtil {
     /**
      * 使用指定密钥进行DES解密
      */
+    @JvmStatic
     fun encrypt(plainText: String, key: String): String? {
         try {
             return DES(key).encrypt(plainText)
@@ -35,6 +37,7 @@ object EncryUtil {
     /**
      * 使用默认密钥进行DES解密
      */
+    @JvmStatic
     fun decrypt(plainText: String): String? {
         try {
             return DES().decrypt(plainText)
@@ -48,6 +51,7 @@ object EncryUtil {
     /**
      * 使用指定密钥进行DES解密
      */
+    @JvmStatic
     fun decrypt(plainText: String, key: String): String? {
         try {
             return DES(key).decrypt(plainText)
@@ -58,6 +62,7 @@ object EncryUtil {
     }
 
 }
+
 
 fun main(args: Array<String>) {
     val source = "test"

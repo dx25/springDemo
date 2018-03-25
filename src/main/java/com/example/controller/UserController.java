@@ -14,7 +14,7 @@ import java.util.List;
  * Created by silence on 2017/7/4.
  */
 @RestController
-public class Controller {
+public class UserController {
     @Autowired
     PersonService personService;
     @Autowired
@@ -31,14 +31,19 @@ public class Controller {
         return personService.callSb(id);
     }
 
-    @RequestMapping(value = "/save",method = RequestMethod.POST)
-    public Message save(@RequestBody Message message){
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public Message save(@RequestBody Message message) {
         return messageService.save(message);
     }
 
     @RequestMapping(value = "/message")
-    public List<Message> listByName(String name ){
+    public List<Message> listByName(String name) {
         return messageService.selectByName(name);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public Person login(@RequestBody Person person) throws Exception {
+        return personService.login(person);
     }
 
 }

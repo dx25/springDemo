@@ -5,7 +5,7 @@ CREATE TABLE table_user
   name VARCHAR(10) NULL,
   age  INT         NULL
 );
----mysql version must be above THEN 5.5
+-- mysql version must be above THEN 5.5
 CREATE TABLE message
 (
   id          INT       AUTO_INCREMENT
@@ -43,6 +43,8 @@ CREATE TABLE classmates (
   upgraded_school  VARCHAR(128) NULL,
   city             VARCHAR(128) NULL,
   company          VARCHAR(128) NULL
-)
+);
+
+alter TABLE table_user ADD UNIQUE UNQ_NAME(name);
 
 
