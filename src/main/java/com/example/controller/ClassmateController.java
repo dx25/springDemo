@@ -4,6 +4,7 @@ import com.example.bean.Classmates;
 import com.example.service.ClassmatesService;
 import com.example.vm.ClassmatesListRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/classmates")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ClassmateController {
 
   @Autowired
@@ -27,7 +29,7 @@ public class ClassmateController {
   }
 
   @RequestMapping(value = "/list", method = RequestMethod.POST)
-  public List<Classmates> listClassmates(@RequestBody ClassmatesListRequest request) {
+  public List<Classmates> listClassmates(@RequestBody(required = false) ClassmatesListRequest request) {
     List<Classmates> list = classmatesService.listClassmates(request);
     return list;
   }
