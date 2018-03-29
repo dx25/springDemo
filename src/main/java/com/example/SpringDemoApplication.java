@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.bean.Person;
 import com.example.service.PersonService;
 import com.example.service.TokenService;
 import org.mybatis.spring.annotation.MapperScan;
@@ -16,26 +17,30 @@ import javax.annotation.PostConstruct;
 @ComponentScan
 @MapperScan("com.example.mapper")
 public class SpringDemoApplication {
-  @Autowired
-  private PersonService personService_;
-  @Autowired
-  private TokenService tokenService_;
-  private static PersonService personService;
-  private static TokenService tokenService;
+    @Autowired
+    private PersonService personService_;
+    @Autowired
+    private TokenService tokenService_;
+    private static PersonService personService;
+    private static TokenService tokenService;
 
-  @PostConstruct
-  public void init() {
-    personService = personService_;
-    tokenService = tokenService_;
-  }
+    @PostConstruct
+    public void init() {
+        personService = personService_;
+        tokenService = tokenService_;
+    }
 
-  public static void main(String[] args) {
-    SpringApplication.run(SpringDemoApplication.class, args);
-    personService.callName();
-    personService.callSb(2l);
-    //System.out.println(tokenService.generateToken(123));
-    //tokenService.invalidToken("21b068d0a00b469b8e85aa41f94737b6");
-    System.out.println(tokenService.getUserIdByToken("280e513ed44048c280e221c849848699"));
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SpringDemoApplication.class, args);
+        personService.callName();
+        personService.callSb(2l);
+        //System.out.println(tokenService.generateToken(123));
+        //tokenService.invalidToken("21b068d0a00b469b8e85aa41f94737b6");
+        Person p = new Person();
+        p.setId(1);
+        p.setPassword(personService.genPassword("123456"));
+        personService.updatePassword(p);
+        System.out.println(tokenService.getUserIdByToken("280e513ed44048c280e221c849848699"));
+    }
 
 }

@@ -21,6 +21,7 @@ open class TokenService {
         val userToken = UserToken()
         userToken.userId = userId
         userToken.token = uuid
+        deleteTokenByUserId(userId)
         userTokenDao.insert(userToken)
         return uuid
     }
@@ -30,6 +31,12 @@ open class TokenService {
         userToken.token = token
         val example = UserTokenExample()
         example.createCriteria().andTokenEqualTo(token)
+        userTokenDao.deleteByExample(example)
+    }
+
+    fun deleteTokenByUserId(userId: Long) {
+        val example = UserTokenExample()
+        example.createCriteria().andUserIdEqualTo(userId)
         userTokenDao.deleteByExample(example)
     }
 
