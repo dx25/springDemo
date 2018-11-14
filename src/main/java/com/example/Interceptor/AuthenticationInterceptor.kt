@@ -23,11 +23,11 @@ open class AuthenticationInterceptor : HandlerInterceptor {
         if (handler !is HandlerMethod) {
             return true
         }
-        val handlerMethod = handler as HandlerMethod
-        val method = handlerMethod.method
+        val method = handler.method
         val annotation = method.getAnnotation(Authenticate::class.java)
         if (annotation != null) {
-            val token = request.getParameter("token")
+//            val token = request.getParameter("token")
+            val token = request.getHeader("token")
             if (token.isNullOrBlank()) {
                 throw RuntimeException("无token")
             } else {
@@ -40,7 +40,7 @@ open class AuthenticationInterceptor : HandlerInterceptor {
         } else {
             return true
         }
-        return false
+        throw RuntimeException("无权限")
     }
 
     override fun postHandle(request: HttpServletRequest?, response: HttpServletResponse?, handler: Any?, modelAndView: ModelAndView?) {
