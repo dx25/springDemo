@@ -8,10 +8,9 @@ import org.springframework.http.MediaType
 import org.springframework.http.converter.HttpMessageConverter
 import org.springframework.http.server.ServerHttpRequest
 import org.springframework.http.server.ServerHttpResponse
-import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice
 
-@ControllerAdvice
+//@ControllerAdvice
 class ResponseBodyInterceptor : ResponseBodyAdvice<Any> {
     @Autowired
     private lateinit var objectMapper: ObjectMapper
@@ -25,6 +24,9 @@ class ResponseBodyInterceptor : ResponseBodyAdvice<Any> {
         resp.code = 0
         resp.status = 200
         return when (body) {
+            is ResponseMessage -> {
+                body
+            }
             is Any -> {
                 resp.body = body
                 resp
