@@ -40,7 +40,7 @@ public class SpringDemoApplication {
         p.setId(1);
         p.setPassword(personService.genPassword("123456"));
         personService.updatePassword(p);
-        System.out.println(tokenService.getUserIdByToken("280e513ed44048c280e221c849848699"));
+//        System.out.println(tokenService.getUserIdByToken("280e513ed44048c280e221c849848699"));
     }
 
 }
